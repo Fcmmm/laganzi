@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>HTML5拉杆子过关小游戏</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a9430a37066911650e26adadcc42798a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+
+<div class="container">
+  <div id="score"></div>
+  <canvas id="game" width="375" height="375"></canvas>
+  <div id="introduction">按住鼠标伸出一根棍子</div>
+  <div id="perfect">双倍积分</div>
+  <button id="restart">重新开始</button>
+</div>
+
+<script  src="js/script.js"></script>
+
+<div style="text-align:center;"></div>
+	<!-- <footer class="page-footer">
+	  <span>游戏👉</span>
+	  <a href="https://haiyong.site/moyu" target="_blank">
+		<img class="touxiang"  src="https://haiyong.site/img/favicon.png">
+	  </a>
+	</footer>
+	<footer class="page-left">  
+	  <a href="https://code.haiyong.site/" target="_blank">
+		<img class="touxiang"  src="https://code.haiyong.site/wp-content/uploads/2022/10/logo.jpg">
+	  </a>
+	  <span>👈源码</span>
+	</footer> -->
+	<script>
+		//禁用操作
+		
+		window.onload = function(){
+		    document.onkeydown = function (){
+		        var e = window.event || arguments[0];
+		        //F12
+		        if(e.keyCode == 123){
+		            return false;
+		        //Ctrl+Shift+I
+		        }else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+		            return false;
+		        //Ctrl+Shift+C
+		        }else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 67)){
+		            return false;
+		        //Shift+F10
+		        }else if((e.shiftKey) && (e.keyCode == 121)){
+		            return false;
+		        //Ctrl+U
+		        }else if((e.ctrlKey) && (e.keyCode == 85)){
+		            return false;
+		        //Ctrl+S
+		        }else if((e.ctrlKey) && (e.keyCode == 83)){
+		        return false;
+		    }
+		};
+		    document.oncontextmenu = function (){
+		        return false;
+		    }
+		}
+		
+		//禁止复制
+		document.onselectstart=new Function('event.returnValue=false;');
+		
+		//禁止选择文字
+		document.body.onselectstart = function() {
+		    self.event.returnValue=false
+		  };
+	</script>
+</body>
+</html>
+
