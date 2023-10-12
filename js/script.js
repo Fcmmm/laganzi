@@ -1,4 +1,6 @@
 
+
+
 Array.prototype.last = function () {
   return this[this.length - 1];
 };
@@ -59,6 +61,7 @@ const ctx = canvas.getContext("2d");
 const introductionElement = document.getElementById("introduction");
 const perfectElement = document.getElementById("perfect");
 const restartButton = document.getElementById("restart");
+const restartButton1 = document.getElementById("restart1");
 const scoreElement = document.getElementById("score");
 
 // Initialize layout
@@ -75,6 +78,7 @@ function resetGame() {
   introductionElement.style.opacity = 1;
   perfectElement.style.opacity = 0;
   restartButton.style.display = "none";
+  restartButton1.style.display = "block";
   scoreElement.innerText = score;
 
   // The first platform is always the same
@@ -164,11 +168,27 @@ window.addEventListener("mousedown", function (event) {
   }
 });
 
+window.addEventListener("touchstart", function (event) {
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
+
 window.addEventListener("mouseup", function (event) {
   if (phase == "stretching") {
     phase = "turning";
   }
 });
+
+window.addEventListener("touchend", function (event) {
+  if (phase == "stretching") {
+    phase = "turning";
+  }
+});
+
 
 window.addEventListener("resize", function (event) {
   canvas.width = window.innerWidth;
@@ -323,6 +343,12 @@ function draw() {
 }
 
 restartButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  resetGame();
+  restartButton.style.display = "none";
+});
+
+restartButton1.addEventListener("click", function (event) {
   event.preventDefault();
   resetGame();
   restartButton.style.display = "none";
